@@ -1,0 +1,23 @@
+{
+  "name": "node-hangman",
+  "version": "1.0.0",
+  "description": "hangman",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JenPhD/node-hangman.git"
+  },
+  "keywords": [
+    "hangman",
+    "node"
+  ],
+  "author": "DrJcode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JenPhD/node-hangman/issues"
+  },
+  "homepage": "https://github.com/JenPhD/node-hangman#readme"
+}
