@@ -6,7 +6,7 @@ function Word(president) {
     //empty array to push letters into
     this.lets = [];
     //the random president that is the word to be guessed put in upper case
-    this.answer = president.toUpperCase();
+    this.answer = president.toUpperCase().split("");
     //boolean if guessed correctly or not
     this.correctPresident = false;
 
@@ -15,9 +15,9 @@ function Word(president) {
     this.answerGuessed = function () {
         var presAnswer = [];
         for(var i = 0; i < this.answer.length; i++){
-            presAnswer.push(this.lets[i].returnCorrect())
+            presAnswer.push(this.lets[i].letterRender())
         }
-        if(presAnswer.toUpperCase() === this.answer.toUpperCase()){
+        if(presAnswer.join("").toUpperCase() === this.answer.join("").toUpperCase()){
             this.correctPresident = true;
         }
         return this.correctPresident;
@@ -28,9 +28,9 @@ function Word(president) {
         //loop through letters and replace placeholder with letters guessed correctly
         var finalPres = [];
         for(var letter in this.lets){
-            finalPres.push(this.lets[letter].returnCorrect())
+            finalPres.push(this.lets[letter].letterRender())
         }
-        console.log(finalPres);
+        console.log(finalPres.join(" "));
     }
 
     this.generateWord = function () {

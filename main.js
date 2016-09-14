@@ -33,11 +33,11 @@ function initHangman() {
 	//Ready to begin!
 	game.startGame();
 	//Display placeholders
-	console.log("placeholders");
+	//console.log("placeholders");
 	game.currentPres.display();
 
 	//below is a test to make sure if there is a letter in the guessed array it will be caught
-	game.lettersGuessed.push('a');
+	// game.lettersGuessed.push('a');
 
 	//- ask the user to enter a guess.
 	promptInput();
@@ -51,9 +51,10 @@ function promptInput() {
 			message:"Enter guess (letter A-Z): ",
 			validate:function(value){
 				var validInputs = /[a-z]|[A-Z]/i;
-				//this checks to make sure the inputs are valid
+				//check to make sure the inputs are valid
 				if(value.length === 1 && validInputs.test(value)){
-					//this check to see if the letter has een guessed already
+					console.log("tested input");
+					//this check to see if the letter has been guessed already
 					if(game.lettersGuessed.length > 0) {
 						console.log("letters guessed!")
 						for (var items in game.lettersGuessed) {

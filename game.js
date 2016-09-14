@@ -55,7 +55,7 @@ function Game() {
 	//Starting a new game with 10 guesses, a new random word, and empty array of letters guessed
 	this.startGame = function(){
 		this.guessRemaining = 10;
-		this.lettersGuess = [];
+		this.lettersGuessed = [];
 		this.currentPres = this.generatePres();
 		console.log("Ready to play President Hangman!");
 	};
