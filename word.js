@@ -1,57 +1,69 @@
-var Letter = require('./letter.js');
+//check guessed letters and compare them to the president name that is the random word
+var Letter = require("./letter.js");
 
-var regEx = /[a-z] | [0-9]/i;
-function Word(target) {
-	this.target = target;
 
-	this.targetWord = target.toUpperCase().split('');//characterArray
-	this.displayWord = this.generateDislplayWord(target);
+function Word(president) {
+    //empty array to push letters into
+    this.lets = [];
+    //the random president that is the word to be guessed put in upper case
+    this.answer = president.toUpperCase();
+    //boolean if guessed correctly or not
+    this.correctPresident = false;
 
-	this.generateDisplayWord() = function () {
-		var wordArray = [];
+    //methods
+    //first check to see if the word is guessed
+    this.answerGuessed = function () {
+        var presAnswer = [];
+        for(var i = 0; i < this.answer.length; i++){
+            presAnswer.push(this.lets[i].returnCorrect())
+        }
+        if(presAnswer.toUpperCase() === this.answer.toUpperCase()){
+            this.correctPresident = true;
+        }
+        return this.correctPresident;
+    };
 
-		for (var i=0; i < this.target.length; i++) {
-			if ( regEx.test(this.target[i]) )
-				wordArray.push( new Letter(this.target[i].toUpperCase()))
-			else
-				wordArray.push(this.target[i])
-		}
-		return wordArray;
-	}
-	this.checkLetterInput = function(letter) {
-		var isCorrect = false;
+    //final display when answer is correct
+    this.display = function () {
+        //loop through letters and replace placeholder with letters guessed correctly
+        var finalPres = [];
+        for(var letter in this.lets){
+            finalPres.push(this.lets[letter].returnCorrect())
+        }
+        console.log(finalPres);
+    }
 
-		for ( var index in this.targetWord) {
-			if(letter.toUpperCase() === this.targetWord[index]) {
-				this.displayWord[index].guessed = true;
-				isCorrect = true;
-			}
+    this.generateWord = function () {
+        for (var i= 0; i < this.answer.length; i++) {
+            this.lets.push(new Letter(this.answer[i].toUpperCase()));
+        }
+    }
 
-			this.getTargetWord = function () {
-				var target = this.targetWord.join('');
-				return target;
-			}
-
-			this.getDisplayWord = function () {
-				var display = '';
-
-				for (var index in this.displayWord) {
-					if ( regEx.test(this.displayWord[index]) )
-						display += this.displayWord[index].getCharacter();
-					else
-						display += this.displayWord[index];
-				}
-
-				return display;
-			}
-
-		}
-		return isCorrect;
-
-	}
+    //render what to return when a letter is guessed.
+    this.letterCheck = function (guessLetter) {
+        var returnLetters = false;
+        for (var i = 0; i < this.answer.length; i++) {
+            console.log(this.display[i].correctLetter);
+            console.log(guessLetter.toUpperCase());
+            if (guessLetter.toUpperCase() === this.lets[i].correctLetter){
+                console.log(this.display[i]);
+                this.lets[i].guessed = true;
+                returnLetters = true;
+            }
+        }
+        return returnLetters;
+    }
 }
+// var word = new Word("hello-world");
+// word.generateDisplayWord();
+// console.log(word.letterCheck('l'));
+// word.display();
+// for(var i=0;i<word.answer.length;i++) {
+//     word.lets[i].guessed = true;
+// }
+// word.display();
+// console.log(word.answerGuessed())
+
+
 
 module.exports = Word;
-
-
-

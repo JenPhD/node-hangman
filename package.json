@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/JenPhD/node-hangman/issues"
   },
-  "homepage": "https://github.com/JenPhD/node-hangman#readme"
+  "homepage": "https://github.com/JenPhD/node-hangman#readme",
+  "dependencies": {
+    "inquirer": "^1.1.3"
+  }
 }
